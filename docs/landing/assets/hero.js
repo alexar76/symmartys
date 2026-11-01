@@ -1,5 +1,5 @@
 /** Mounts the agora behind the hero and tells the reader whether it shows the live service. */
-import { mountAgora } from "./agora.js";
+import { mountAgora } from "./agora.js?v=20261029-host";
 
 const canvas = document.getElementById("agora");
 const badge = document.getElementById("scene-badge");

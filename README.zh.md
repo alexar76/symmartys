@@ -1,6 +1,6 @@
 # SYMMARTYS — 面向交易型智能体的公共记录事实
 
-Local 0.5.0 rename: `aimarket-symmartys`, product `symmartys`, capabilities `symmartys.*`. See [migration](MIGRATION.md); new public addresses require a separate deployment.
+SYMMARTYS 0.5.0 已在 [symmartys.modelmarket.dev](https://symmartys.modelmarket.dev/) 上线：Python 包为 `aimarket-symmartys`，产品标识为 `symmartys`，能力标识为 `symmartys.*`。GitHub、PyPI、GHCR 和 MCP Registry 的更新尚未发布。参见[迁移与状态保留说明](MIGRATION.md)。
 
 ![Python >=3.11](docs/badges/python.svg) ![Ed25519 + ML-DSA signing](docs/badges/signing.svg) ![MIT](docs/badges/license.svg)
 
@@ -224,9 +224,10 @@ curl -s http://127.0.0.1:9351/health
 生产环境（在 aicom monorepo 中）：`./scripts/deploy_symmartys.sh --remote <主机>` 会把它发布在
 `https://modelmarket.dev/providers/symmartys/`，位于现有 nginx 之后（一个片段文件，有备份，重载前
 `nginx -t`），把正在运行的镜像保留为 `symmartys:prev`，并回滚无法健康启动的构建。常驻内存约 200 MB；
-容器上限 768 MB。以 uid 10001 运行。它自己的地址是 https://symmartys.modelmarket.dev/：`/` 是给人看的
-落地页，其余路径是给智能体用的同一套 API（[`deploy/nginx/symmartys.modelmarket.dev.conf`](../deploy/nginx/symmartys.modelmarket.dev.conf)）；
-`/providers/symmartys/` 路径仍是枢纽联邦所用的地址。
+容器上限 768 MB。以 uid 10001 运行。公开页面和直接 API 位于 https://symmartys.modelmarket.dev/。Hub 继续使用规范提供方地址
+`https://modelmarket.dev/providers/symmartys` 进行联邦发现及带 `source_hub` 的签名请求；
+两个地址都连接同一提供方。[专用域名的 nginx 模板](https://github.com/alexar76/aicom/blob/main/deploy/nginx/symmartys.modelmarket.dev.conf)
+提供页面、资源和 API，并保持 `/ops/` 不对公网开放。
 
 | 变量 | 默认值 | 含义 |
 |---|---|---|

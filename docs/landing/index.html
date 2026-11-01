@@ -202,7 +202,6 @@
         <a href="#caps" data-i18n="nav_caps">Capabilities</a>
         <a href="#trust" data-i18n="nav_trust">Trust</a>
         <a href="#call" data-i18n="nav_call">Call it</a>
-        <a href="https://github.com/alexar76/emporion" data-i18n="nav_source">Legacy source (0.4.2)</a>
         <a class="nav-cta" href="https://symmartys.modelmarket.dev/ai-market/v2/manifest" data-i18n="nav_live">Live service</a>
         <span class="langsw" aria-label="Language">
           <button type="button" data-lang="en">EN</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="es">ES</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="zh">ZH</button>
@@ -221,7 +220,7 @@
       <p data-i18n="hero_p">Public-record facts for agents that trade: EU VAT, legal entities, ECB rates, sanctions lists and Bitcoin timestamps — every answer signed with its source, the fetch time and the SHA-256 of what the source returned.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="https://symmartys.modelmarket.dev/ai-market/v2/manifest" data-i18n="cta_live">Open the live service</a>
-        <a class="btn btn-ghost" href="https://github.com/alexar76/emporion" data-i18n="cta_github">Legacy source (0.4.2)</a>
+        <a class="btn btn-ghost" href="#call" data-i18n="cta_guide">Integration guide</a>
         <a class="btn btn-ghost" href="https://modelmarket.dev/" data-i18n="cta_hub">Buy through modelmarket.dev</a>
       </div>
     </div></div>
@@ -300,7 +299,7 @@
     <section id="call">
       <div class="wrap">
         <h2 data-i18n="call_h2">Call it</h2>
-        <p class="lead" data-i18n="call_lead">Through the hub — five free trial calls an hour — or run your own copy from the repository.</p>
+        <p class="lead" data-i18n="call_lead">Through the hub — five free trial calls an hour — or run your own local copy.</p>
 <pre><span class="c"># check a VAT number through modelmarket.dev (a free trial call)</span>
 curl -s https://modelmarket.dev/ai-market/v2/invoke \
   -H 'Content-Type: application/json' \
@@ -335,11 +334,11 @@ curl -s http://127.0.0.1:9351/ai-market/v2/manifest</pre>
     <span>
       <a href="https://symmartys.modelmarket.dev/">symmartys.modelmarket.dev</a>
       ·
-      <a href="https://github.com/alexar76/emporion/blob/main/CHANGELOG.md" data-i18n="foot_changes">Legacy changelog (0.4.2)</a>
+      <a href="https://symmartys.modelmarket.dev/.well-known/ai-market.json" data-i18n="foot_discovery">API discovery</a>
     </span>
   </footer>
 
-<script src="assets/landing.js"></script>
-<script type="module" src="assets/hero.js"></script>
+<script src="assets/landing.js?v=20261029-host"></script>
+<script type="module" src="assets/hero.js?v=20261029-host"></script>
 </body>
 </html>

@@ -1,16 +1,13 @@
-<!-- aicom-mirror-notice -->
-> **🔄 Synced from a monorepo — but with a live history.** `symmartys` mirrors the
-> canonical AI-Factory monorepo. History here is append-only (no force-push).
-> **Pull requests are welcome** — merged PRs are imported back into the monorepo
-> and re-synced here, so your contribution becomes canonical.
-> 💬 **[Issues](https://github.com/alexar76/symmartys/issues)** · **[Pull requests](https://github.com/alexar76/symmartys/pulls)** both welcome.
+# SYMMARTYS — public-record facts for agents that trade
 
 <!-- aicom-readme-badges -->
 <!-- /aicom-readme-badges -->
 
-# SYMMARTYS — public-record facts for agents that trade
 
-Local 0.5.0 rename: product `symmartys`, capabilities `symmartys.*`, Python package `aimarket-symmartys`. See [migration and state preservation](MIGRATION.md). New public addresses require a separate deployment; no renamed GitHub repository is claimed.
+<!-- aicom-mirror-notice -->
+> 🔄 Synced from the [AI-Factory monorepo](https://github.com/alexar76/aicom) (append-only history). **Pull requests are welcome** — merged PRs are imported back and re-synced here. [Issues](https://github.com/alexar76/symmartys/issues) · [Pull requests](https://github.com/alexar76/symmartys/pulls)
+
+SYMMARTYS 0.5.0 is live at [symmartys.modelmarket.dev](https://symmartys.modelmarket.dev/): product `symmartys`, capabilities `symmartys.*`, Python package `aimarket-symmartys`. Updates to GitHub, PyPI, GHCR and MCP Registry are not yet published. See [migration and state preservation](MIGRATION.md).
 
 ![Python >=3.11](docs/badges/python.svg) ![Ed25519 + ML-DSA signing](docs/badges/signing.svg) ![MIT](docs/badges/license.svg)
 
@@ -259,9 +256,11 @@ Production, from the aicom monorepo: `./scripts/deploy_symmartys.sh --remote <ho
 `https://modelmarket.dev/providers/symmartys/` behind the existing nginx (one snippet, backed up,
 `nginx -t` before reload), keeps the running image as `symmartys:prev` and rolls back an unhealthy
 build. Steady memory ≈ 200 MB; the container is capped at 768 MB. It runs as uid 10001.
-Its branded deployment target is https://symmartys.modelmarket.dev/ — the landing for people at `/`, the same API
-for agents everywhere else ([`deploy/nginx/symmartys.modelmarket.dev.conf`](../deploy/nginx/symmartys.modelmarket.dev.conf));
-the `/providers/symmartys/` path stays the address the hub federates with.
+The public homepage and direct API are at https://symmartys.modelmarket.dev/. The Hub keeps its canonical
+provider URL `https://modelmarket.dev/providers/symmartys` for federation and signed
+`source_hub` requests; both addresses reach the same provider. The dedicated-host
+[nginx template](https://github.com/alexar76/aicom/blob/main/deploy/nginx/symmartys.modelmarket.dev.conf) serves the landing,
+assets and API while keeping `/ops/` private.
 
 | Variable | Default | Meaning |
 |---|---|---|

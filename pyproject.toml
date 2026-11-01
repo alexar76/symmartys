@@ -30,8 +30,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://modelmarket.dev/"
-"Legacy source (through 0.4.2)" = "https://github.com/alexar76/emporion"
+Homepage = "https://symmartys.modelmarket.dev/"
+"Service manifest" = "https://symmartys.modelmarket.dev/ai-market/v2/manifest"
 
 [build-system]
 requires = ["hatchling"]

@@ -1,6 +1,6 @@
 # SYMMARTYS — faits de registre public pour les agents qui commercent
 
-Local 0.5.0 rename: `aimarket-symmartys`, product `symmartys`, capabilities `symmartys.*`. See [migration](MIGRATION.md); new public addresses require a separate deployment.
+SYMMARTYS 0.5.0 est en service sur [symmartys.modelmarket.dev](https://symmartys.modelmarket.dev/) : paquet `aimarket-symmartys`, produit `symmartys`, capacités `symmartys.*`. Les mises à jour GitHub, PyPI, GHCR et MCP Registry ne sont pas encore publiées. Voir la [migration et la conservation de l’état](MIGRATION.md).
 
 ![Python >=3.11](docs/badges/python.svg) ![Ed25519 + ML-DSA signing](docs/badges/signing.svg) ![MIT](docs/badges/license.svg)
 
@@ -258,10 +258,11 @@ Production, depuis le monorepo aicom : `./scripts/deploy_symmartys.sh --remote <
 `https://modelmarket.dev/providers/symmartys/` derrière le nginx existant (un fragment, sauvegardé,
 `nginx -t` avant rechargement), garde l'image en service comme `symmartys:prev` et revient en
 arrière si une construction ne démarre pas saine. Mémoire au repos ≈ 200 Mo ; le conteneur est
-plafonné à 768 Mo. Il tourne sous l'uid 10001. Son adresse propre est https://symmartys.modelmarket.dev/ :
-la page pour les personnes sur `/`, la même API pour les agents sur tous les autres chemins
-([`deploy/nginx/symmartys.modelmarket.dev.conf`](../deploy/nginx/symmartys.modelmarket.dev.conf)) ;
-le chemin `/providers/symmartys/` reste l'adresse avec laquelle le hub fédère.
+plafonné à 768 Mo. Il tourne sous l'uid 10001. La page publique et l’API directe sont sur https://symmartys.modelmarket.dev/. Le Hub conserve
+l’URL canonique du fournisseur `https://modelmarket.dev/providers/symmartys` pour la fédération
+et les requêtes signées avec `source_hub` ; les deux adresses servent le même fournisseur.
+Le [modèle nginx du domaine dédié](https://github.com/alexar76/aicom/blob/main/deploy/nginx/symmartys.modelmarket.dev.conf)
+sert la page, ses ressources et l’API, tout en gardant `/ops/` privé.
 
 | Variable | Défaut | Sens |
 |---|---|---|

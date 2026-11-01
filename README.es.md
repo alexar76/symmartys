@@ -1,6 +1,6 @@
 # SYMMARTYS — hechos de registro público para agentes que comercian
 
-Local 0.5.0 rename: `aimarket-symmartys`, product `symmartys`, capabilities `symmartys.*`. See [migration](MIGRATION.md); new public addresses require a separate deployment.
+SYMMARTYS 0.5.0 está en servicio en [symmartys.modelmarket.dev](https://symmartys.modelmarket.dev/): paquete `aimarket-symmartys`, producto `symmartys`, capacidades `symmartys.*`. Las actualizaciones de GitHub, PyPI, GHCR y MCP Registry aún no se han publicado. Véase la [migración y conservación del estado](MIGRATION.md).
 
 ![Python >=3.11](docs/badges/python.svg) ![Ed25519 + ML-DSA signing](docs/badges/signing.svg) ![MIT](docs/badges/license.svg)
 
@@ -256,10 +256,11 @@ Producción, desde el monorepo aicom: `./scripts/deploy_symmartys.sh --remote <h
 `https://modelmarket.dev/providers/symmartys/` detrás del nginx existente (un fragmento, con copia de
 seguridad y `nginx -t` antes de recargar), conserva la imagen en marcha como `symmartys:prev` y
 revierte una compilación que no arranca sana. Memoria en reposo ≈ 200 MB; el contenedor está
-limitado a 768 MB. Se ejecuta como uid 10001. Su propia dirección es https://symmartys.modelmarket.dev/:
-la página para las personas en `/` y la misma API para los agentes en el resto de rutas
-([`deploy/nginx/symmartys.modelmarket.dev.conf`](../deploy/nginx/symmartys.modelmarket.dev.conf));
-la ruta `/providers/symmartys/` sigue siendo la dirección con la que federa el hub.
+limitado a 768 MB. Se ejecuta como uid 10001. La página pública y la API directa están en https://symmartys.modelmarket.dev/. El Hub conserva
+la URL canónica del proveedor `https://modelmarket.dev/providers/symmartys` para la federación
+y las peticiones firmadas con `source_hub`; ambas direcciones llegan al mismo proveedor.
+La [plantilla nginx del dominio dedicado](https://github.com/alexar76/aicom/blob/main/deploy/nginx/symmartys.modelmarket.dev.conf)
+sirve la página, sus recursos y la API, manteniendo `/ops/` privado.
 
 | Variable | Por defecto | Significado |
 |---|---|---|

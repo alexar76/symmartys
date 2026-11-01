@@ -19,11 +19,13 @@ import { RenderPass } from "./vendor/three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "./vendor/three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "./vendor/three/addons/postprocessing/OutputPass.js";
 
-// On its own domain the page asks itself; the GitHub Pages copy asks the live service (CORS
-// allows alexar76.github.io); a local copy asks a local SYMMARTYS.
+// The apex landing uses its provider prefix. Existing dedicated hosts ask themselves;
+// a copied page uses the product hostname, and localhost uses a local SYMMARTYS.
 const HOST = location.hostname;
 const API = /^(localhost|127\.0\.0\.1)$/.test(HOST) ? "http://127.0.0.1:9351"
-  : HOST === "symmartys.modelmarket.dev" ? "" : "https://symmartys.modelmarket.dev";
+  : HOST === "modelmarket.dev" ? "/providers/symmartys"
+  : /^(?:symmartys|emporion)\.modelmarket\.dev$/.test(HOST) ? ""
+  : "https://symmartys.modelmarket.dev";
 
 const BRONZE = 0xd9a441;
 const SOURCES = [

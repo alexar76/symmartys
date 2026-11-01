@@ -1,8 +1,12 @@
-# SYMMARTYS 0.5.0: local namespace migration
+# SYMMARTYS 0.5.0: namespace migration
 
 SYMMARTYS (συμμάρτυς, a joint or corroborating witness) succeeds this ecosystem's
-EMPORION package through 0.4.2. This change is prepared locally. It does not create,
-rename or publish a GitHub repository, PyPI release, container or public deployment.
+EMPORION package through 0.4.2. The production runtime was replaced on 2026-10-29 at
+`https://modelmarket.dev/providers/symmartys`, preserving its Ed25519 and ML-DSA keys,
+data volume and operator settings. The former provider route remains an alias.
+GitHub and PyPI publication remain pending. The dedicated
+`https://symmartys.modelmarket.dev/` hostname serves the landing and API over HTTPS
+as of 2026-10-29; federation retains the provider URL above.
 
 ## API and installation
 
@@ -31,8 +35,8 @@ python -m pytest tests -q
 SYMMARTYS_PUBLIC_URL=http://127.0.0.1:9351 python -m symmartys.main
 ```
 
-The [legacy public source](https://github.com/alexar76/emporion) describes releases
-through 0.4.2. No `alexar76/symmartys` repository is claimed by this local release.
+Source changes for this release remain in the local `aicom/symmartys` checkout.
+No public source repository is claimed by this local release.
 The dated older sections of [CHANGELOG.md](CHANGELOG.md) retain their original IDs.
 
 ## Preserve identity and state
@@ -75,5 +79,3 @@ SYMMARTYS_VOLUME_NAME=symmartys-data docker compose -f symmartys/docker-compose.
 Set `SYMMARTYS_PUBLIC_URL` to the address actually routed to this local deployment.
 The volume is external: Compose refuses a missing or misspelled volume instead of
 silently creating empty state and a new signing identity.
-The new branded domains and provider paths in examples are deployment targets,
-not evidence that deployment has already happened.

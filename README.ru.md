@@ -1,6 +1,6 @@
 # SYMMARTYS — публичные факты для агентов, которые торгуют
 
-Локальное переименование 0.5.0: продукт `symmartys`, функции `symmartys.*`, пакет Python `aimarket-symmartys`. См. [миграцию и сохранение состояния](MIGRATION.md). Новые публичные адреса требуют отдельного развёртывания; новый репозиторий GitHub не заявляется.
+SYMMARTYS 0.5.0 работает по адресу [symmartys.modelmarket.dev](https://symmartys.modelmarket.dev/): продукт `symmartys`, функции `symmartys.*`, пакет Python `aimarket-symmartys`. Обновления GitHub, PyPI, GHCR и MCP Registry пока не опубликованы. См. [миграцию и сохранение состояния](MIGRATION.md).
 
 ![Python >=3.11](docs/badges/python.svg) ![Ed25519 + ML-DSA signing](docs/badges/signing.svg) ![MIT](docs/badges/license.svg)
 
@@ -254,9 +254,11 @@ curl -s http://127.0.0.1:9351/health
 `https://modelmarket.dev/providers/symmartys/` за существующим nginx (один сниппет с резервной
 копией и `nginx -t` перед перезагрузкой), сохраняет работающий образ как `symmartys:prev` и
 откатывает нездоровую сборку. Память в покое ≈ 200 МБ, предел контейнера 768 МБ. Процесс работает
-под uid 10001. Собственный адрес — https://symmartys.modelmarket.dev/: для людей по `/` лендинг, для
-агентов по всем остальным путям тот же API ([`deploy/nginx/symmartys.modelmarket.dev.conf`](../deploy/nginx/symmartys.modelmarket.dev.conf));
-путь `/providers/symmartys/` остаётся адресом, под которым SYMMARTYS знает федерация хабов.
+под uid 10001. Публичная страница и прямой API доступны на https://symmartys.modelmarket.dev/. Хаб сохраняет
+канонический адрес провайдера `https://modelmarket.dev/providers/symmartys` для федерации
+и подписанных запросов `source_hub`; оба адреса ведут к одному провайдеру.
+[Шаблон nginx для отдельного домена](https://github.com/alexar76/aicom/blob/main/deploy/nginx/symmartys.modelmarket.dev.conf)
+отдаёт лендинг, ресурсы и API, оставляя `/ops/` закрытым.
 
 | Переменная | По умолчанию | Смысл |
 |---|---|---|

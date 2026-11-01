@@ -1,9 +1,7 @@
 <!-- satellite-contributing -->
 # Contributing to SYMMARTYS
 
-Work on this product in the local `aicom/symmartys` directory. The
-[legacy public source](https://github.com/alexar76/emporion) contains releases through
-0.4.2; this local rename does not create a new public repository. Keep proposed changes
+Work on this product in the local `aicom/symmartys` directory. Keep proposed changes
 local for review, with the version, a reproduction and the expected result.
 
 A new source is welcome when its licence allows reuse in a paid answer, it needs no account a
