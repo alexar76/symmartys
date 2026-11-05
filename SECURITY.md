@@ -2,7 +2,7 @@
 
 ## Report privately
 
-Do not open a public issue for a vulnerability. Email **alexar76@rambler.ru** with the affected
+Do not open a public issue for a vulnerability. Email **qwezzy721@gmail.com** with the affected
 revision, a reproduction and the impact. We acknowledge within 48 hours and coordinate
 disclosure; researchers are credited in the release notes when they wish.
 
